@@ -1,0 +1,59 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: #51ea5c;
+    border-radius: calc(0.5rem * var(--mantine-scale));
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    -o-transition: .3s ease;
+    -webkit-border-radius: calc(0.5rem * var(--mantine-scale));
+    -moz-border-radius: calc(0.5rem * var(--mantine-scale));
+    -ms-border-radius: calc(0.5rem * var(--mantine-scale));
+    -o-border-radius: calc(0.5rem * var(--mantine-scale));
+}
+
+.overlayContainter {
+    position: relative;
+}
+
+.overlayContainter:hover .hoverOverlay {
+    opacity: 0.6;
+}
+
+.limitedImage {
+    object-position: top;
+}
+
+.imageButton {
+    height: fit-content;
+}
+
+.correctImage {
+    transition: .3s ease;
+    border: 10px solid #51ea5c;
+}
+
+.incorrectImage {
+    transition: .3s ease;
+    border: 10px solid #ea5151;
+}
+
+.correctOverlay {
+    transition: .3s ease;
+    background-color: #51ea5c;
+    opacity: 0.4;
+}
+
+.incorrectOverlay {
+    transition: .3s ease;
+    background-color: #ea5151;
+    opacity: 0.4;
+}

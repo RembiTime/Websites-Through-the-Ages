@@ -2,12 +2,18 @@ import { AppShell, Burger, Center, Space } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import GameScreen from './GameScreen';
 import Navbar from './Navbar';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 
 function MainPage() {
   const [opened, { toggle }] = useDisclosure(false);
   const [pickingGamemode, setPickingGamemode] = useState(true);
   const [titleText, setTitleText] = useState("Pick a mode!");
+
+  useEffect(() => { // Change the title back when the game restarts
+    if (pickingGamemode) {
+      setTitleText("Pick a mode!")
+    }
+  }, [pickingGamemode])
 
   return (
     <AppShell
@@ -17,7 +23,7 @@ function MainPage() {
         collapsed: { mobile: !opened, desktop: !opened },
       }}
     >
-      <AppShell.Header>
+      <AppShell.Header fz={24}>
         <Center p="10px">
             <Burger
             opened={opened}
@@ -30,7 +36,7 @@ function MainPage() {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
-        <Navbar setPickingGamemode={setPickingGamemode} setTitleText={setTitleText}/>
+        <Navbar setPickingGamemode={setPickingGamemode} toggle={toggle}/>
       </AppShell.Navbar>
 
       <AppShell.Main>

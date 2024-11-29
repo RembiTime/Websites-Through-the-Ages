@@ -1,0 +1,108 @@
+[
+    {
+        "name": "Google",
+        "type": "folder",
+        "children": [
+            {
+                "name": "1998.png",
+                "type": "file"
+            },
+            {
+                "name": "2001.png",
+                "type": "file"
+            },
+            {
+                "name": "2004.png",
+                "type": "file"
+            },
+            {
+                "name": "2010.png",
+                "type": "file"
+            },
+            {
+                "name": "2014.png",
+                "type": "file"
+            },
+            {
+                "name": "2017.png",
+                "type": "file"
+            },
+            {
+                "name": "2019.png",
+                "type": "file"
+            }
+        ]
+    },
+    {
+        "name": "McDonald's",
+        "type": "folder",
+        "children": [
+            {
+                "name": "1996.png",
+                "type": "file"
+            },
+            {
+                "name": "1997.png",
+                "type": "file"
+            },
+            {
+                "name": "1999.png",
+                "type": "file"
+            },
+            {
+                "name": "2000.png",
+                "type": "file"
+            },
+            {
+                "name": "2005.png",
+                "type": "file"
+            },
+            {
+                "name": "2010.jpg",
+                "type": "file"
+            },
+            {
+                "name": "2018.jpg",
+                "type": "file"
+            },
+            {
+                "name": "2021.jpg",
+                "type": "file"
+            }
+        ]
+    },
+    {
+        "name": "YouTube",
+        "type": "folder",
+        "children": [
+            {
+                "name": "2005.png",
+                "type": "file"
+            },
+            {
+                "name": "2006.png",
+                "type": "file"
+            },
+            {
+                "name": "2009.png",
+                "type": "file"
+            },
+            {
+                "name": "2012.png",
+                "type": "file"
+            },
+            {
+                "name": "2013.png",
+                "type": "file"
+            },
+            {
+                "name": "2020.jpg",
+                "type": "file"
+            },
+            {
+                "name": "2022.jpg",
+                "type": "file"
+            }
+        ]
+    }
+]
