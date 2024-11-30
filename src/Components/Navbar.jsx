@@ -12,6 +12,7 @@ function Navbar({setPickingGamemode, toggle}) {
             setPickingGamemode(true);
             toggle();
         }}
+        className='gradientButton'
     >
         Restart
     </Button>

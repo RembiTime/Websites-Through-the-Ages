@@ -30,10 +30,12 @@
 
 .limitedImage {
     object-position: top;
+    object-fit: cover;
 }
 
 .imageButton {
     height: fit-content;
+    padding-bottom: 10px;
 }
 
 .correctImage {
@@ -56,4 +58,46 @@
     transition: .3s ease;
     background-color: #ea5151;
     opacity: 0.4;
+}
+
+.headerContainer {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+    justify-items: center;
+    align-items: center;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gradientButton :hover { /*Currently only changes over the center of the button and doesn't animate out*/
+    color: #aaa;
+    transition: color .2s ease;
+    -webkit-transition: color .2s ease;
+    -moz-transition: color .2s ease;
+    -ms-transition: color .2s ease;
+    -o-transition: color .2s ease;
+}
+
+.mantine-NumberInput-input.perfectDate {
+    transition: .3s ease;
+    border: solid #51ea5c;
+}
+
+.mantine-NumberInput-input.goodDate {
+    transition: .3s ease;
+    border: solid #f2ff62;
+}
+
+.mantine-NumberInput-input.badDate {
+    transition: .3s ease;
+    border: solid var(--mantine-color-red-9);
+}
+
+.mantine-Popover-dropdown.goodNews, .mantine-Popover-arrow.goodNews {
+    border: solid #51ea5c 2px;
+}
+
+.mantine-Popover-dropdown.badNews, .mantine-Popover-arrow.badNews {
+    border: solid var(--mantine-color-red-9) 2px;
 }
