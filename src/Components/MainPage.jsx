@@ -54,7 +54,7 @@ function MainPage() {
       }}
     >
       <AppShell.Header>
-        <Header opened={opened} toggle={toggle} points={points} streak={streak} openPopover={openPointsPopover} setOpenPopover={setOpenPointsPopover} pointsAdded={pointsAdded} newsType={newsType}/>
+        <Header opened={opened} toggle={toggle} points={points} streak={streak} openPopover={openPointsPopover} setOpenPopover={setOpenPointsPopover} pointsAdded={pointsAdded} newsType={newsType} setPickingGamemode={setPickingGamemode}/>
       </AppShell.Header>
 
       <AppShell.Navbar p="md">

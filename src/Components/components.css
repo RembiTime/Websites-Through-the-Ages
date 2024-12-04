@@ -101,3 +101,11 @@
 .mantine-Popover-dropdown.badNews, .mantine-Popover-arrow.badNews {
     border: solid var(--mantine-color-red-9) 2px;
 }
+
+.zoomImage:hover {
+    cursor: zoom-in;
+}
+
+.websiteTitle:hover {
+    cursor: grab;
+}

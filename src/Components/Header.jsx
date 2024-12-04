@@ -2,7 +2,7 @@ import { Burger, Text, Popover } from '@mantine/core';
 import PropTypes from 'prop-types';
 import './components.css'
 
-function Header({opened, toggle, points, streak, openPopover, setOpenPopover, pointsAdded, newsType}) {
+function Header({opened, toggle, points, streak, openPopover, setOpenPopover, pointsAdded, newsType, setPickingGamemode}) {
 
   return (
     <div className='headerContainer'>
@@ -11,7 +11,7 @@ function Header({opened, toggle, points, streak, openPopover, setOpenPopover, po
         onClick={toggle}
         size="sm"
         />
-        <Text fz={24} m="xs">Websites Through the Ages</Text>
+        <Text fz={24} m="xs" onClick={() => setPickingGamemode(true)} className='websiteTitle'>Websites Through the Ages</Text>
         <div>
           <Text>Streak: {streak}</Text>
           <Popover 
@@ -41,6 +41,7 @@ Header.propTypes = {
     setOpenPopover: PropTypes.func.isRequired,
     pointsAdded: PropTypes.number.isRequired,
     newsType: PropTypes.string.isRequired,
+    setPickingGamemode: PropTypes.func.isRequired,
 }
 
 export default Header;

@@ -16,6 +16,12 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
     const [rightImageLoaded, setRightImageLoaded] = useState(false);
     const [leftImage, setLeftImage] = useState("");
     const [rightImage, setRightImage] = useState("");
+    const [leftYear, setLeftYear] = useState(0);
+    const [rightYear, setRightYear] = useState(0);
+    const [leftBrand, setLeftBrand] = useState("");
+    const [rightBrand, setRightBrand] = useState("");
+    const [leftDesc, setLeftDesc] = useState("");
+    const [rightDesc, setRightDesc] = useState("");
     const [leftImageState, setLeftImageState] = useState(0); // 0 = playing, 1 = corrent, 2 = incorrect, 3 = done picking years/other (same with below)
     const [rightImageState, setRightImageState] = useState(0); 
     const [confettiActive, setConfettiActive] = useState(false);
@@ -56,20 +62,24 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
         
         let leftYear = Math.floor(Math.random() * imagePaths[leftWebsite]['children'].length);
         let rightYear = Math.floor(Math.random() * imagePaths[rightWebsite]['children'].length);
-        while (imagePaths[leftWebsite]['children'][leftYear]['name'].slice(0, 4) === imagePaths[rightWebsite]['children'][rightYear]['name'].slice(0, 4)) {
+        while (imagePaths[leftWebsite]['children'][leftYear]['year'] === imagePaths[rightWebsite]['children'][rightYear]['year']) {
             rightYear = Math.floor(Math.random() * imagePaths[rightWebsite]['children'].length);
         }
 
         setLeftImageLoaded(false);
         setRightImageLoaded(false);
-        setLeftImage("/images/" + imagePaths[leftWebsite]['name'] + "/" + imagePaths[leftWebsite]['children'][leftYear]['name']);
-        setRightImage("/images/" + imagePaths[rightWebsite]['name'] + "/" + imagePaths[rightWebsite]['children'][rightYear]['name']);
+        setLeftImage("/images/" + imagePaths[leftWebsite]['children'][leftYear]['image']);
+        setRightImage("/images/" + imagePaths[rightWebsite]['children'][rightYear]['image']);
+        setLeftYear(imagePaths[leftWebsite]['children'][leftYear]['year']);
+        setRightYear(imagePaths[rightWebsite]['children'][rightYear]['year']);
+        setLeftBrand(imagePaths[leftWebsite]['name']);
+        setRightBrand(imagePaths[rightWebsite]['name']);
+        setLeftDesc(imagePaths[leftWebsite]['children'][leftYear]['desc']);
+        setRightDesc(imagePaths[rightWebsite]['children'][rightYear]['desc']);
     }
 
     function optionChosen(option) {
         if (gameState === 0) {
-            let leftYear = parseInt(leftImage.split("/")[3].substring(0, 4))
-            let rightYear = parseInt(rightImage.split("/")[3].substring(0, 4))
             if (rightYear > leftYear && option === 1 || leftYear > rightYear && option === 2) {
                 setGameState(1);
                 setTitleText("Correct! Now can you guess the year?");
@@ -121,8 +131,6 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
         }
         
         setGameState(3);
-        let leftYear = parseInt(leftImage.split("/")[3].substring(0, 4))
-        let rightYear = parseInt(rightImage.split("/")[3].substring(0, 4))
         let gainedPoints = 0;
         if (leftInput == leftYear) {
             setLeftResult("perfectDate");
@@ -187,6 +195,7 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
                             onClick={() => selectMode(1)}
                             size='xl'
                             className='gradientButton'
+                            fullWidth
                         >
                             Same Website
                         </Button>
@@ -202,6 +211,7 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
                             onClick={() => selectMode(2)}
                             size='xl'
                             className='gradientButton'
+                            fullWidth
 
                         >
                             Random
@@ -217,7 +227,7 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
                         <ImageButton buttonAction={optionChosen} buttonNum={1} imageLoaded={leftImageLoaded} setImageLoaded={setLeftImageLoaded} otherImageLoaded={rightImageLoaded} src={leftImage} imageState={leftImageState} />
                         <Transition mounted={gameState === 3} transition={'fade-down'}>
                             {(transitionStyle) => (
-                                <Title order={2} pb="sm" style={transitionStyle}>Actual: {parseInt(leftImage.split("/")[3].substring(0, 4))}</Title>
+                                <Title order={2} pb="sm" style={transitionStyle}>Actual: {leftYear}</Title>
                             )}
                         </Transition>
                         <Transition mounted={gameState === 1 || gameState === 3} transition={'fade-down'} exitDuration={0}>
@@ -236,7 +246,7 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
                         <ImageButton buttonAction={optionChosen} buttonNum={2} imageLoaded={rightImageLoaded} setImageLoaded={setRightImageLoaded} otherImageLoaded={leftImageLoaded} src={rightImage} imageState={rightImageState} />
                         <Transition mounted={gameState === 3} transition={'fade-down'}>
                             {(transitionStyle) => (
-                                <Title order={2} pb="sm" style={transitionStyle}>Actual: {parseInt(rightImage.split("/")[3].substring(0, 4))}</Title>
+                                <Title order={2} pb="sm" style={transitionStyle}>Actual: {rightYear}</Title>
                             )}
                         </Transition>
                         <Transition mounted={gameState === 1 || gameState === 3} transition={'fade-down'} exitDuration={0}>
@@ -282,8 +292,8 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
         </Transition>
         
         {/* Popup Modals: */}
-        <ImageInfo src={leftImage} opened={leftInfoOpened} close={closeLeftInfo}/>
-        <ImageInfo src={rightImage} opened={rightInfoOpened} close={closeRightInfo}/>
+        <ImageInfo src={leftImage} brand={leftBrand} year={leftYear} desc={leftDesc} opened={leftInfoOpened} close={closeLeftInfo}/>
+        <ImageInfo src={rightImage} brand={rightBrand} year={rightYear} desc={rightDesc} opened={rightInfoOpened} close={closeRightInfo}/>
     </Paper>
   );
 }
