@@ -5,7 +5,7 @@ function ImageInfo({src, brand, year, desc, opened, close}) {
 
   return (
     <Modal opened={opened} onClose={close } title={brand + " - " + year}>
-        <a href={window.location.href + src.substring(1)} target="_blank">
+        <a href={window.location.href + src.substring(2)} target="_blank">
         <Image
             radius="md"
             src={src}

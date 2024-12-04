@@ -68,8 +68,8 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
 
         setLeftImageLoaded(false);
         setRightImageLoaded(false);
-        setLeftImage("/images/" + imagePaths[leftWebsite]['children'][leftYear]['image']);
-        setRightImage("/images/" + imagePaths[rightWebsite]['children'][rightYear]['image']);
+        setLeftImage("./images/" + imagePaths[leftWebsite]['children'][leftYear]['image']);
+        setRightImage("./images/" + imagePaths[rightWebsite]['children'][rightYear]['image']);
         setLeftYear(imagePaths[leftWebsite]['children'][leftYear]['year']);
         setRightYear(imagePaths[rightWebsite]['children'][rightYear]['year']);
         setLeftBrand(imagePaths[leftWebsite]['name']);
