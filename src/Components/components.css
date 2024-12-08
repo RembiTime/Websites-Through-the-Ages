@@ -41,23 +41,43 @@
 .correctImage {
     transition: .3s ease;
     border: 10px solid #51ea5c;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .incorrectImage {
     transition: .3s ease;
     border: 10px solid #ea5151;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .correctOverlay {
     transition: .3s ease;
     background-color: #51ea5c;
+    border-radius: 20px;
     opacity: 0.4;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .incorrectOverlay {
     transition: .3s ease;
     background-color: #ea5151;
+    border-radius: 20px;
     opacity: 0.4;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 
 .headerContainer {

@@ -31,18 +31,35 @@ function MainPage() {
     }
   }, [pickingGamemode])
 
+  useEffect(() => { // Gets streak and points from cache on page load
+    pointsAnimator.start(parseInt(localStorage.getItem("points") ?? 0));
+    setStreak(parseInt(localStorage.getItem("streak") ?? 0));
+  }, [])
+
   function updatePoints(newValue) {
     setPointsAdded(newValue - points);
     setNewsType("goodNews");
     setOpenPointsPopover(true);
+    localStorage.setItem("points", newValue);
     setTimeout(() => setOpenPointsPopover(false), 2500)
     pointsAnimator.start(newValue);
+  }
+
+  function updateStreak(newValue) {
+    setStreak(newValue);
+    localStorage.setItem("streak", newValue);
   }
 
   function notifyStreakReset() {
     setNewsType("badNews");
     setOpenPointsPopover(true);
     setTimeout(() => setOpenPointsPopover(false), 2500)
+  }
+
+  function resetPoints() {
+    pointsAnimator.start(0);
+    localStorage.setItem("points", 0);
+    updateStreak(0);
   }
 
   return (
@@ -58,11 +75,11 @@ function MainPage() {
       </AppShell.Header>
 
       <AppShell.Navbar p="md">
-        <Navbar setPickingGamemode={setPickingGamemode} toggle={toggle}/>
+        <Navbar setPickingGamemode={setPickingGamemode} toggle={toggle} resetPoints={resetPoints}/>
       </AppShell.Navbar>
 
       <AppShell.Main>
-        <GameScreen pickingGamemode={pickingGamemode} setPickingGamemode={setPickingGamemode} titleText={titleText} setTitleText={setTitleText} points={points} updatePoints={updatePoints} notifyStreakReset={notifyStreakReset} streak={streak} setStreak={setStreak}/>
+        <GameScreen pickingGamemode={pickingGamemode} setPickingGamemode={setPickingGamemode} titleText={titleText} setTitleText={setTitleText} points={points} updatePoints={updatePoints} notifyStreakReset={notifyStreakReset} streak={streak} setStreak={updateStreak}/>
       </AppShell.Main>
     </AppShell>
   );

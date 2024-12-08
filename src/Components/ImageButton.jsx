@@ -12,14 +12,12 @@ function ImageButton({buttonAction, buttonNum, imageLoaded, setImageLoaded, othe
     >
         <div className="overlayContainter">
             <div className="!!!!! So we're cheating now? !!!!!" />
-            <Skeleton visible={!imageLoaded && !otherImageLoaded} maw={500} mah={600} miw={300} mih={200} w="100%">
+            <Skeleton visible={!imageLoaded && !otherImageLoaded} mah={400} mih={200} w="100%" style={{"overflow": "hidden", "--image-radius": "var(--mantine-radius-md)"}} className={(imageState == 1 ? " correctImage" : "") + " " + (imageState == 2 ? " incorrectImage" : "")}>
                 <Image
                     radius="md"
                     src={src}
                     onLoad={() => setImageLoaded(true)}
-                    maw={500}
-                    mah={600}
-                    className={"limitedImage" + (imageState == 1 ? " correctImage" : "") + " " + (imageState == 2 ? " incorrectImage" : "")}
+                    className={"limitedImage"}
                 />
             </Skeleton>
             <div className={"!!!!! So we're cheating now? !!!!! overlay" + (imageState == 0 ? " hoverOverlay" : "") + (imageState == 1 ? " correctOverlay" : "") + " " + (imageState == 2 ? " incorrectOverlay" : "")} />

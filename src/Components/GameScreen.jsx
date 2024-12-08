@@ -50,7 +50,11 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
         setLeftResult("");
         setRightResult("");
         setPickingGamemode(false);
-        setTitleText("Gamemode " + gamemode + ": Which is older?");
+        let text = "Same Websites: "
+        if (gamemode === 2) {
+            text = "Different Websites: "
+        }
+        setTitleText(text + "Which is older?");
 
         let leftWebsite = Math.floor(Math.random() * imagePaths.length);
         let rightWebsite = leftWebsite;
@@ -214,7 +218,7 @@ function GameScreen({pickingGamemode, setPickingGamemode, titleText, setTitleTex
                             fullWidth
 
                         >
-                            Random
+                            Different Websites
                         </Button>
                     </div>
                 )}
